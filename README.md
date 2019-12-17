@@ -202,3 +202,9 @@ if command in Command.SHOOT.value:
 - LEGO and Mindstorms are from [LEGO Group](https://www.lego.com)
 - Amazon and Alexa are from [Amazon](https://www.amazon.com/)
 - Emoticons are from [Mozilla](https://emojipedia.org/mozilla/)
+
+## Authors
+
+We enjoyed creating and programming this Tech United Soccer Robot and hope you have as much fun building and coaching it as we did.
+
+__Hans Odenthal__ (designing) & __Jan Willem van Silfhout__ (designing) & __Colin Lambrechts__ (programming)
