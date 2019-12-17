@@ -10,7 +10,7 @@ You can build and program your own Turtle. This turtle fully autonomously listen
 
 ## Background story
 
-The goal of this robot is to make children enthusiastic about technology. Technology controls and simplifies an ever larger part of our lives. Hans, designer of the Turtle: "We want to let children experience technology by themselves. We live in a world where the role of technology becomes more and more important, but at the same time, there is also a shortage of engineers. So we must do everything we can, to fill this gap and get the engineers of the future excited." With our Turtle we hope to make kids enthusiastic for technology and develop themselves to become better builders of tomorrow.
+The goal of this robot is to make children enthusiastic about technology. Technology controls and simplifies an ever larger part of our lives. Hans: "We want to let children experience technology by themselves. We live in a world where the role of technology becomes more and more important, but at the same time, there is also a shortage of engineers. So we must do everything we can, to fill this gap and get the engineers of the future excited." With our Turtle we hope to make kids enthusiastic for technology and develop themselves to become better builders of tomorrow.
 
 ## What is a Turtle
 
@@ -24,19 +24,13 @@ TURTLEs are the football robots that compete in the [RoboCup Mid-Size League](ht
 
 ### Parts
 
-To build your own Turtle you will need the Mindstorms EV3 kit [#31313](https://www.lego.com/nl-nl/product/lego-mindstorms-ev3-31313) in addition to the components described in the table below. For the Turtle to be able move around in all directions with only 3 wheels we make use of omni wheels. For more information on omni wheels check [this Wikipedia article](https://en.wikipedia.org/wiki/Omni_wheel). Omni wheels are wheels that can travel in all directions instead of the 2 with normal wheels. In the programming section we will explain how to employ these cool wheels. Unfortunately LEGO does not have omni wheel components, so we use [...]() instead (also see table below).
+To build your own Turtle you will need the Mindstorms EV3 kit [#31313](https://www.lego.com/nl-nl/product/lego-mindstorms-ev3-31313) in addition to the components described in the attached [Order List](attachments/Tech_United_Robot_-_Order_List.xlsx), including component images for convenience. For the Turtle to be able move around in all directions with only 3 wheels we make use of omni wheels. For more information on omni wheels check [this Wikipedia article](https://en.wikipedia.org/wiki/Omni_wheel). Omni wheels are wheels that can travel in all directions instead of the 2 with normal wheels. In the programming section we will explain how to employ these cool wheels. Unfortunately LEGO does not have omni wheel components, so we use "Omni Wheel 58 mm" from [Nexus Robots](http://www.nexusrobot.com/) instead (also see [Order List](attachments/Tech_United_Robot_-_Order_List.xlsx) for ordering options).
 
-| Part Number | Color | Amount | Description        | Link |
-| ----------- | ----- | ------ | ------------------ | ---- |
-| 45503       |       | 1      | Large Ev3 motor    | https://www.lego.com/nl-nl/product/ev3-large-servo-motor-45502 |
-| | | | | |
-|             |       | 3      | Omni wheel         | |
-
-Or you can buy the [expansion set](https://www.toypro.com/nl/product/36768/sioux-en-tech-united-voetbalrobot-uitbreidingsset) specifically assembled. You could even get the [combi deal of the mindstorms and the expansion set](https://www.toypro.com/nl/product/37159/combi-deal-sioux-en-tech-united-voetbalrobot-compleet).
+Or you can buy the [expansion set](https://www.toypro.com/nl/product/36768/sioux-en-tech-united-voetbalrobot-uitbreidingsset) specifically assembled. You could even get the [combi-deal of the mindstorms and the expansion set](https://www.toypro.com/nl/product/37159/combi-deal-sioux-en-tech-united-voetbalrobot-compleet).
 
 ### Instructions
 
-The [building instructions](Building_Instructions_-_Sioux_Tech_United_Robot.pdf) can be found in a separate PDF file, which can be opened with any PDF reader like [Acrobat Reader](https://get.adobe.com/reader/), [SumatraPDF](https://sumatra-pdf.en.softonic.com/), and most browsers (Firefox, Chrome, and Edge).
+The [building instructions](attachments/Lego_Instructions_Soccer_Robot.pdf) can be found in a separate PDF file, which can be opened with any PDF reader like [Acrobat Reader](https://get.adobe.com/reader/), [SumatraPDF](https://sumatra-pdf.en.softonic.com/), and most browsers (Firefox, Chrome, and Edge).
 
 ### Programming
 
@@ -46,7 +40,11 @@ The following sections describe how to program the Turtle and continues where th
 
 ![Information](emoticons/information-source_2139_s.png) The movement of the Turtle can be done after step 59 in the building instructions. Just connect the left motor to port A, right to B and back motor to C. Note that the black beam added in step 59 indicates the front of the Turtle.
 
-![Information](emoticons/information-source_2139_s.png) The taking and shooting of the ball can be done after step 154 in the building instructions. Just connect the medium motor to port D.
+![Step 59 Movement Sub Assembly](readme-images/step-59.png)
+
+![Information](emoticons/information-source_2139_s.png) The taking and shooting of the ball can be done after step 153 in the building instructions. Just connect the medium motor to port D. However, we recommend building the turtle to completion (step 168).
+
+![Step 168 Complete Turtle](readme-images/step-168.png)
 
 #### Setting up the motors and sensors
 
