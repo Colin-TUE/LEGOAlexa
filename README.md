@@ -38,7 +38,7 @@ In this project we will program the Turtle using Ev3Dev and Python. To start con
 
 The following sections describe how to program the Turtle and continues where the missions or Setup ended. Specifically, it means your EV3 is already setup with EV3Dev as well as able to connect to your Alexa product and VSCode is setup to connect to your EV3 and run Python code.
 
-![Information](emoticons/information-source_2139_s.png) The movement of the Turtle can be done after step 59 in the building instructions. Just connect the left motor to port A, right to B and back motor to C. Note that the black beam added in step 59 indicates the front of the Turtle.
+![Information](emoticons/information-source_2139_s.png) The movement of the Turtle can be done after step 59 in the building instructions. Just connect the left motor to port A, right to B and back motor to C. Note that the black beam added in step 59 indicates the front of the Turtle and the "spoiler" indicates the back.
 
 ![Step 59 Movement Sub Assembly](readme-images/step-59.png)
 
