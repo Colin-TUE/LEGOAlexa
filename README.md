@@ -8,6 +8,19 @@ In this document we will refer to the challenge and the sources provided there. 
 
 You can build and program your own Turtle. This turtle fully autonomously listens to your commands and you can coach the Turtle to victory.
 
+## Repository Overview
+
+In this section we will briefly describe what each folder contains:
+
+| Folder            | Contents                                                   |
+| ----------------- | ---------------------------------------------------------- |
+| .vscode           | The configuration for your VS Code application             |
+| attachments       | Files referred to in this document, like building instructions |
+| emoticons         | Emoticon images                                            |
+| ev3-code-python   | The Python code that runs on the EV3 brick                 |
+| readme-images     | Images used in the README documents                        |
+| skill-code-nodejs | Node.JS code that runs as an Alexa skill                   |
+
 ## Background story
 
 The goal of this robot is to make children enthusiastic about technology. Technology controls and simplifies an ever larger part of our lives. Hans: "We want to let children experience technology by themselves. We live in a world where the role of technology becomes more and more important, but at the same time, there is also a shortage of engineers. So we must do everything we can, to fill this gap and get the engineers of the future excited." With our Turtle we hope to make kids enthusiastic for technology and develop themselves to become better builders of tomorrow.
