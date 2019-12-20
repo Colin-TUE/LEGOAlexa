@@ -84,13 +84,13 @@ Moving the Turtle is more complicated than moving a car, since we need to use al
 
 Below is an sketch of the wheel configuration. The concept behind the triangle is that we can move in all directions with just 3 wheels. We will refer to this sketch in the following sections when programming a specific direction.
 
-![TODO: include image of triangle configuration and motor location](.)
+![Triangle configuration and motor location](readme-images/turtle-omni-wheels.png)
 
 ##### Move Forwards and Backwards
 
 So let's start with moving forwards. To move forward we need to enable both front motors (port A and B). These motors need to be set to the same speed and rotate in opposite directions. THe opposite direction is needed, since the motors are positioned in opposite directions. We want the wheels to rotate in the same directions and therefore one motor needs to be set in negative speed. In summary, to move forward we set motor A to 25% power and Motor B to -25% power. In this example we use 2 seconds for the duration.
 
-![TODO: include image of triangle configuration and motor location](.)
+![Motor direction forward-backward](readme-images/turtle-omni-wheels-fb.png)
 
 It is important that the control of the motors is non-blocking, since we want to control both motors at the same time. You could achieve this using a tank control, however, we need to control different sets of motors in different directions.
 
@@ -112,7 +112,7 @@ if direction in Direction.BACKWARD.value:
 
 Rotating the turtle around it's center point is relatively easy. Just rotate all wheels in the same direction. So we enable all large motors with the same speed and duration. Again it is important to make the control non-blocking, since all motors need to be moving at the same time.
 
-![TODO: include image of triangle configuration and motor location](.)
+![Motor direction rotation](readme-images/turtle-omni-wheels-t.png)
 
 ```python
 if direction in Direction.LEFT.value:
@@ -125,7 +125,7 @@ if direction in Direction.LEFT.value:
 
 Now we have covered the basic movement and lets dive into the movements that make omni wheels so cool: Moving sideways. For the sideways movement we need to enable all large motors. We cannot just set the same speed to all, since then the Turtle will rotate during its movement (also cool ,but left as an experiment to the reader). Instead we need to make sure that the back wheel does not rotate and follows a straight line. We do that by applying less power to the front wheels, specifically half the power. The front wheels need to move in opposite direction. The reason is that motor A needs to counter act the rotation of motor B and thereby keep the Turtle straight. It might sound counter intuitive, so just play around with different values using the python snippets provided or the [LEGO Mindstorms EV3 Home Edition software](https://www.lego.com/en-us/themes/mindstorms/downloads).
 
-![TODO: include image of triangle configuration and motor location](.)
+![Motor direction left-right](readme-images/turtle-omni-wheels-lr.png)
 
 ```python
 if direction in Direction.LEFT.value:
