@@ -32,10 +32,14 @@ class Direction(Enum):
     The list of directional commands and their variations.
     These variations correspond to the skill slot values.
     """
-    FORWARD = ['forward', 'forwards', 'go forward']
-    BACKWARD = ['back', 'backward', 'backwards', 'go backward']
-    LEFT = ['left', 'go left']
-    RIGHT = ['right', 'go right']
+    FORWARD = ['forward', 'forwards', 'go forward', 'north']
+    BACKWARD = ['back', 'backward', 'backwards', 'go backward', 'south']
+    LEFT = ['left', 'go left', 'east']
+    RIGHT = ['right', 'go right', 'west']
+    FORWARD_LEFT = ['north west', 'forward left']
+    FORWARD_RIGHT = ['north east', 'forward right']
+    BACKWARD_LEFT = ['south west', 'backward left']
+    BACKWARD_RIGHT = ['south east', 'backward right']
     ROTATE_LEFT = ['left', 'counterclockwise', 'anticlockwise']
     ROTATE_RIGHT = ['right', 'clockwise']
     STOP = ['stop', 'brake']
@@ -161,6 +165,26 @@ class MindstormsGadget(AlexaGadget):
             self.motorLeft.on_for_seconds(SpeedPercent(speed/2), duration, block=is_blocking)
             self.motorRight.on_for_seconds(SpeedPercent(speed/2), duration, block=is_blocking)
             self.motorBack.on_for_seconds(SpeedPercent(-speed), duration, block=is_blocking)
+        
+        if direction in Direction.FORWARD_RIGHT.value:
+            self.motorLeft.on_for_seconds(SpeedPercent(speed/4), duration, block=is_blocking)
+            self.motorRight.on_for_seconds(SpeedPercent(-speed), duration, block=is_blocking)
+            self.motorBack.on_for_seconds(SpeedPercent(speed/2), duration, block=is_blocking)
+
+        if direction in Direction.BACKWARD_RIGHT.value:
+            self.motorLeft.on_for_seconds(SpeedPercent(-speed), duration, block=is_blocking)
+            self.motorRight.on_for_seconds(SpeedPercent(speed/4), duration, block=is_blocking)
+            self.motorBack.on_for_seconds(SpeedPercent(speed/2), duration, block=is_blocking)
+
+        if direction in Direction.FORWARD_LEFT.value:
+            self.motorLeft.on_for_seconds(SpeedPercent(speed), duration, block=is_blocking)
+            self.motorRight.on_for_seconds(SpeedPercent(-speed/4), duration, block=is_blocking)
+            self.motorBack.on_for_seconds(SpeedPercent(-speed/2), duration, block=is_blocking)
+
+        if direction in Direction.BACKWARD_LEFT.value:
+            self.motorLeft.on_for_seconds(SpeedPercent(-speed/4), duration, block=is_blocking)
+            self.motorRight.on_for_seconds(SpeedPercent(speed), duration, block=is_blocking)
+            self.motorBack.on_for_seconds(SpeedPercent(-speed/2), duration, block=is_blocking)
 
         if direction in Direction.STOP.value:
             self.motorLeft.off()

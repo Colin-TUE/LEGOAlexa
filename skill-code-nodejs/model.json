@@ -93,6 +93,56 @@
                     "values": [
                         {
                             "name": {
+                                "value": "north"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "southwest"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "southeast"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "northwest"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "northeast"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "west"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "south"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "east"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "forward left"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "forward right"
+                            }
+                        },
+                        {
+                            "name": {
                                 "value": "brake"
                             }
                         },
