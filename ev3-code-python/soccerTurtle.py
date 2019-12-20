@@ -239,14 +239,14 @@ class MindstormsGadget(AlexaGadget):
         :param is_blocking: if set, motor run until duration expired before accepting another command
         """
         if direction in Direction.LEFT.value:
-            self.motorLeft.on_for_seconds(SpeedPercent(speed), 2, block=is_blocking)
-            self.motorRight.on_for_seconds(SpeedPercent(speed), 2, block=is_blocking)
-            self.motorBack.on_for_seconds(SpeedPercent(speed), 2, block=is_blocking)
+            self.motorLeft.on_for_seconds(SpeedPercent(speed/5), 2, block=is_blocking)
+            self.motorRight.on_for_seconds(SpeedPercent(speed/5), 2, block=is_blocking)
+            self.motorBack.on_for_seconds(SpeedPercent(speed/5), 2, block=is_blocking)
 
         if direction in Direction.RIGHT.value:
-            self.motorLeft.on_for_seconds(SpeedPercent(-speed), 2, block=is_blocking)
-            self.motorRight.on_for_seconds(SpeedPercent(-speed), 2, block=is_blocking)
-            self.motorBack.on_for_seconds(SpeedPercent(-speed), 2, block=is_blocking)
+            self.motorLeft.on_for_seconds(SpeedPercent(-speed/5), 2, block=is_blocking)
+            self.motorRight.on_for_seconds(SpeedPercent(-speed/5), 2, block=is_blocking)
+            self.motorBack.on_for_seconds(SpeedPercent(-speed/5), 2, block=is_blocking)
 
     def _send_event(self, name: EventName, payload):
         """
