@@ -39,7 +39,7 @@ TURTLEs are the football robots that compete in the [RoboCup Mid-Size League](ht
 
 ## Voice interaction
 
-With this project you can be your own coach of a LEGO Mindstorms Turtle. You can take control of the team and lead your team to victory. During a match, as coach, you cannot walk into the field and influence the match. You need to talk (read call out) to your team members and instruct them what tom do. With Alexa bby your side the Turtle will obey your every command. The instructions you can give the turtle are categorized in two categories: 1. Movement and 2. Actions. Each voice command you utter is constructed as if you are calling out to your team.
+With this project you can be your own coach of a LEGO Mindstorms Turtle. You can take control of the team and lead your team to victory. During a match, as coach, you cannot walk into the field and influence the match. You need to talk (read call out) to your team members and instruct them what to do. With Alexa by your side the Turtle will obey your every command. The instructions you can give the turtle are categorized in two categories: 1. Movement and 2. Actions. Each voice command you utter is constructed as if you are calling out to your team.
 
 ### Movements
 
@@ -76,6 +76,25 @@ where `{Rotation}` can have the values:
 - right, clockwise
 
 and `{Duration}` as well as `{Angle}` are numbers. For the rotation in degrees we convert the rotation of the Turtle to the required rotation of the motors to achieve the Turtle rotation. This is calibrated by just picking a conversion factor in the `soccerTurtle.py`. Then invoke the "Rotate left for 90 degrees" command and verify the difference between the actual rotation made by the Turtle and the intended rotation fo 90 degrees. Based on this difference pick a new number and retry.
+
+### Actions
+
+The turtle has a number of actions to its disposal. They can be triggered by the following sentences, where `{Command}` indicates which specific action command needs to be performed:
+
+- `{Command}` the ball
+- `{Command}`
+- activate `{Command}`
+- activate `{Command}` mode
+- move in a `{Command}`
+- fire `{Command}`
+
+The action commands programmed are:
+
+- take
+- circle
+- square
+- patrol
+- shoot
 
 ## How to build your own
 
