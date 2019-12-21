@@ -37,6 +37,44 @@ TURTLEs are the football robots that compete in the [RoboCup Mid-Size League](ht
 
 [![LEGO Turtle in action](readme-images/lego-turtle-in-action.png)](https://youtu.be/_N5gOkADxhE)
 
+## Voice interaction
+
+With this project you can be your own coach of a LEGO Mindstorms Turtle. You can take control of the team and lead your team to victory. During a match, as coach, you cannot walk into the field and influence the match. You need to talk (read call out) to your team members and instruct them what tom do. With Alexa bby your side the Turtle will obey your every command. The instructions you can give the turtle are categorized in two categories: 1. Movement and 2. Actions. Each voice command you utter is constructed as if you are calling out to your team.
+
+### Movements
+
+The movements available to you are simple directions, like forward, left, and backwards right; orientations, north, west, and south east; as well as rotations; You can speak simple directions as well as complete sentences. For each movement you can specify the duration in seconds, but you do not need to. The following phrases are accepted, where `{Direction}` and `{Duration}` are dynamic:
+
+- `{Direction}`
+- `{Direction}` `{Duration}`
+- move `{Direction}` for `{Duration}` seconds
+
+The `{Duration}` is a positive number and therefore not further explained here. The possible directions are :
+
+- forward, north, forwards, go forward
+- right, east, go right
+- backward, south, backwards, go backwards,
+- left, west, go left
+- brake
+- forward left, north west
+- forward right, north east
+- backward left, south west
+- backward right, south east
+
+Besides moving the Turtle around you can also rotate or turn it. These voice commands have the same structure as the movements.
+
+- Rotate `{Rotation}`
+- Rotate `{Direction}` for `{Duration}` seconds
+- Turn `{Rotation}`
+- Turn `{Direction}` for `{Duration}` seconds
+
+where `{Rotation}` can have the values:
+
+- left, counterclockwise, anticlockwise
+- right, clockwise
+
+and `{Duration}` is a number.
+
 ## How to build your own
 
 ![LEGO Turtle](readme-images/lego-turtle.jpeg)
@@ -154,6 +192,36 @@ if direction in Direction.FORWARD_LEFT.value:
     self.motorBack.on_for_seconds(SpeedPercent(-10), 2, block=is_blocking)
 ```
 
+##### Extending the Movement Directives
+
+The movement directions can be extended by adding more voice directions in the skill. For movement directions extend the `DirectionType` and for the rotations the `RotationType`.
+
+![Extending the DirectionType](readme-images/direction-type.png)
+
+As well as extending the `Direction` enum in the Python code:
+
+```python
+class Direction(Enum):
+    """
+    The list of directional commands and their variations.
+    These variations correspond to the skill slot values.
+    """
+    FORWARD = ['forward', 'forwards', 'go forward', 'north']
+    BACKWARD = ['back', 'backward', 'backwards', 'go backward', 'south']
+    LEFT = ['left', 'go left', 'east']
+    RIGHT = ['right', 'go right', 'west']
+    FORWARD_LEFT = ['north west', 'forward left']
+    FORWARD_RIGHT = ['north east', 'forward right']
+    BACKWARD_LEFT = ['south west', 'backward left']
+    BACKWARD_RIGHT = ['south east', 'backward right']
+    ROTATE_LEFT = ['left', 'counterclockwise', 'anticlockwise']
+    ROTATE_RIGHT = ['right', 'clockwise']
+    STOP = ['stop', 'brake']
+
+```
+
+When adding new Intents for more complicated movements, it is important to add them in the Interaction Model, a handler in the `index.js` (including adding it to the `Alexa.SkillBuilders`) as well as an handler for the new message in the `soccerTurtle.py`.
+
 #### Taking the Ball and Scoring
 
 A moving Turtle is nice, but without a ball you cannot become world champion. In this section we will tackle the taking and shooting of the ball.
@@ -222,6 +290,17 @@ Shooting the ball is simpler and we just need to enable motor D for a short and 
 if command in Command.SHOOT.value:
     self.motorBall.on_for_seconds(SpeedPercent(-50), 0.2)
 ```
+
+## Troubleshooting
+
+This section contains some error you might encounter when using this repo.
+
+- could not find `/usr/bin/python\r`
+  - Convert the line endings of the python file to Linux standard instead of Windows (`\r` instead of `\r\n`). This can be done by using [Notepad++](https://notepad-plus-plus.org/) in "Edit" -> "EOL Conversion" -> "Linux (LF)".
+- Alexa says: "You just triggered <>Intent"
+  - You forgot to deploy the updated lambda code or
+  - the handler is not added to the `Alexa.SkillBuilder` in the `index.js` or
+  - there is a name mismatch between the name of the intent and the handler.
 
 ## Sources
 
