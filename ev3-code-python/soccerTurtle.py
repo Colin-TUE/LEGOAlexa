@@ -21,11 +21,15 @@ from ev3dev2.sound import Sound
 from ev3dev2.motor import OUTPUT_A, OUTPUT_B, OUTPUT_C, OUTPUT_D, MoveTank, SpeedPercent, MediumMotor, LargeMotor
 from ev3dev2.sensor.lego import InfraredSensor
 
+"""
+Conversion factor from the Turtle rotational angle to the motor rotation angle (both in degrees).
+"""
+MOTOR_ANGLE_CONVERSION = 3.5
+
 # Set the logging level to INFO to see messages from AlexaGadget
 logging.basicConfig(level=logging.INFO, stream=sys.stdout, format='%(message)s')
 logging.getLogger().addHandler(logging.StreamHandler(sys.stderr))
 logger = logging.getLogger(__name__)
-
 
 class Direction(Enum):
     """
@@ -130,6 +134,10 @@ class MindstormsGadget(AlexaGadget):
             if control_type == "rotate":
                 # Expected params: [rotation, duration, speed]
                 self._turn(payload["rotation"], int(payload["duration"]), int(payload["speed"]))
+
+            if control_type == "rotateDegrees":
+                # Expected params: [rotation, angle, speed]
+                self._turn_degrees(payload["rotation"], int(payload["angle"]), int(payload["speed"]))
 
             if control_type == "command":
                 # Expected params: [command]
@@ -247,6 +255,30 @@ class MindstormsGadget(AlexaGadget):
             self.motorLeft.on_for_seconds(SpeedPercent(-speed/5), duration, block=is_blocking)
             self.motorRight.on_for_seconds(SpeedPercent(-speed/5), duration, block=is_blocking)
             self.motorBack.on_for_seconds(SpeedPercent(-speed/5), duration, block=is_blocking)
+
+    def _turn_degrees(self, direction, angle, speed, is_blocking=False):
+        """
+        Turns based on the specified direction and speed.
+        Calibrated for hard smooth surface.
+        :param direction: the turn direction
+        :param angle: the turn angle in degrees
+        :param speed: the turn speed
+        :param is_blocking: if set, motor run until duration expired before accepting another command
+        """
+
+        # We cannot use the angle directly, since the angle provided here is defined in degrees rotation for the Turtle
+        # while the degrees used below is in degrees of the motors.
+        motor_angle = angle * MOTOR_ANGLE_CONVERSION
+
+        if direction in Direction.LEFT.value:
+            self.motorLeft.on_for_degrees(SpeedPercent(speed/5), motor_angle, block=is_blocking)
+            self.motorRight.on_for_degrees(SpeedPercent(speed/5), motor_angle, block=is_blocking)
+            self.motorBack.on_for_degrees(SpeedPercent(speed/5), motor_angle, block=is_blocking)
+
+        if direction in Direction.RIGHT.value:
+            self.motorLeft.on_for_degrees(SpeedPercent(-speed/5), motor_angle, block=is_blocking)
+            self.motorRight.on_for_degrees(SpeedPercent(-speed/5), motor_angle, block=is_blocking)
+            self.motorBack.on_for_degrees(SpeedPercent(-speed/5), motor_angle, block=is_blocking)
 
     def _send_event(self, name: EventName, payload):
         """

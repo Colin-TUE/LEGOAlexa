@@ -67,13 +67,15 @@ Besides moving the Turtle around you can also rotate or turn it. These voice com
 - Rotate `{Direction}` for `{Duration}` seconds
 - Turn `{Rotation}`
 - Turn `{Direction}` for `{Duration}` seconds
+- Rotate `{Direction}` for `{Angle}` degrees
+- Turn `{Direction}` for `{Angle}` degrees
 
 where `{Rotation}` can have the values:
 
 - left, counterclockwise, anticlockwise
 - right, clockwise
 
-and `{Duration}` is a number.
+and `{Duration}` as well as `{Angle}` are numbers. For the rotation in degrees we convert the rotation of the Turtle to the required rotation of the motors to achieve the Turtle rotation. This is calibrated by just picking a conversion factor in the `soccerTurtle.py`. Then invoke the "Rotate left for 90 degrees" command and verify the difference between the actual rotation made by the Turtle and the intended rotation fo 90 degrees. Based on this difference pick a new number and retry.
 
 ## How to build your own
 

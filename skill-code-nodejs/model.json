@@ -86,6 +86,23 @@
                         "Turn {Rotation}",
                         "Turn {Rotation} for {Duration} seconds"
                     ]
+                },
+                {
+                    "name": "RotateDegreesIntent",
+                    "slots": [
+                        {
+                            "name": "Rotation",
+                            "type": "RotationType"
+                        },
+                        {
+                            "name": "Angle",
+                            "type": "AMAZON.NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "Rotate {Rotation} for {Angle} degrees",
+                        "Turn {Rotation} for {Angle} degrees"
+                    ]
                 }
             ],
             "types": [

@@ -155,6 +155,43 @@ const RotateIntentHandler = {
     }
 };
 
+// data from the RotateDegreesIntent.
+const RotateDegreesIntentHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'RotateDegreesIntent';
+    },
+    handle: function (handlerInput) {
+        const request = handlerInput.requestEnvelope;
+        const rotation = Alexa.getSlotValue(request, 'Rotation');
+
+        // Duration is optional, use default if not available
+        const angle = Alexa.getSlotValue(request, 'Angle') || "90";
+
+        // Get data from session attribute
+        const attributesManager = handlerInput.attributesManager;
+        const speed = attributesManager.getSessionAttributes().speed || "25";
+        const endpointId = attributesManager.getSessionAttributes().endpointId || [];
+
+        // Construct the directive with the payload containing the move parameters
+        let directive = Util.build(endpointId, NAMESPACE, NAME_CONTROL,
+            {
+                type: 'rotateDegrees',
+                rotation: rotation,
+                angle: angle,
+                speed: speed
+            });
+
+        const speechOutput = `Rotate ${rotation} ${angle} degrees`;
+
+        return handlerInput.responseBuilder
+            .speak(speechOutput)
+            .reprompt("Awaiting commands")
+            .addDirective(directive)
+            .getResponse();
+    }
+};
+
 // Construct and send a custom directive to the connected gadget with data from
 // the SetCommandIntent.
 const SetCommandIntentHandler = {
@@ -259,6 +296,7 @@ exports.handler = Alexa.SkillBuilders.custom()
         SetCommandIntentHandler,
         MoveIntentHandler,
         RotateIntentHandler,
+        RotateDegreesIntentHandler,
         EventsReceivedRequestHandler,
         Common.HelpIntentHandler,
         Common.CancelAndStopIntentHandler,
