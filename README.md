@@ -33,9 +33,9 @@ TURTLEs are the football robots that compete in the [RoboCup Mid-Size League](ht
 
 ### Turtles in action
 
-![[Real Turtle in action](https://youtu.be/_Y5_iGxWFrQ)](readme-images/real-turtle-in-action.png)
+[![Real Turtle in action](readme-images/real-turtle-in-action.png)](https://youtu.be/_Y5_iGxWFrQ)
 
-![[LEGO Turtle in action](https://youtu.be/_N5gOkADxhE)](readme-images/lego-turtle-in-action.png)
+[![LEGO Turtle in action](readme-images/lego-turtle-in-action.png)](https://youtu.be/_N5gOkADxhE)
 
 ## How to build your own
 
@@ -47,7 +47,7 @@ To build your own Turtle you will need the Mindstorms EV3 kit [#31313](https://w
 
 ### Instructions
 
-The [building instructions](attachments/Lego_Instructions_Soccer_Robot.pdf) can be found in a separate PDF file, which can be opened with any PDF reader like [Acrobat Reader](https://get.adobe.com/reader/), [SumatraPDF](https://sumatra-pdf.en.softonic.com/), and most browsers (Firefox, Chrome, and Edge).
+The [building instructions](attachments/LEGO_Instructions_Soccer_Robot.pdf) can be found in a separate PDF file, which can be opened with any PDF reader like [Acrobat Reader](https://get.adobe.com/reader/), [SumatraPDF](https://sumatra-pdf.en.softonic.com/), and most browsers (Firefox, Chrome, and Edge).
 
 ### Programming
 
