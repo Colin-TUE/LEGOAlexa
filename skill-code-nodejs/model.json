@@ -60,6 +60,7 @@
                         }
                     ],
                     "samples": [
+                        "{Command} the ball",
                         "{Command}",
                         "activate {Command} mode",
                         "move in a {Command}",
