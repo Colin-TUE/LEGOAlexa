@@ -31,6 +31,12 @@ TURTLEs are the football robots that compete in the [RoboCup Mid-Size League](ht
 
 ![Real Life Turtles](readme-images/real-turtle.jpg)
 
+### Turtles in action
+
+![[Real Turtle in action](https://youtu.be/_Y5_iGxWFrQ)](readme-images/real-turtle-in-action.png)
+
+![[LEGO Turtle in action](https://youtu.be/_N5gOkADxhE)](readme-images/lego-turtle-in-action.png)
+
 ## How to build your own
 
 ![LEGO Turtle](readme-images/lego-turtle.jpeg)
