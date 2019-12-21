@@ -137,6 +137,17 @@ if direction in Direction.RIGHT.value:
     self.motorBack.on_for_seconds(SpeedPercent(25), 2, block=False)
 ```
 
+##### Moving Diagonally
+
+As mentioned before the omni wheels enable the Turtle to move in all directions. TAs illustration we will move the Turtle diagonally. When moving diagonally, all motors use a different speed. The back motor is used to steer the Turtle in the right horizontal direction (left or right) and the front wheels are used to get the vertical direction (forward and backward). Combining these two movements we get a diagonal move. In this illustration we only move the Turtle forward left or north west. Note that when reversing all speeds, the Turtle will move backwards right or south east. This is because each of the directions is reversed (forward to backward and left to right).
+
+```python
+if direction in Direction.FORWARD_LEFT.value:
+    self.motorLeft.on_for_seconds(SpeedPercent(20), 2, block=is_blocking)
+    self.motorRight.on_for_seconds(SpeedPercent(-5), 2, block=is_blocking)
+    self.motorBack.on_for_seconds(SpeedPercent(-10), 2, block=is_blocking)
+```
+
 #### Taking the Ball and Scoring
 
 A moving Turtle is nice, but without a ball you cannot become world champion. In this section we will tackle the taking and shooting of the ball.
