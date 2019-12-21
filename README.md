@@ -37,9 +37,7 @@ TURTLEs are the football robots that compete in the [RoboCup Mid-Size League](ht
 
 ### Parts
 
-To build your own Turtle you will need the Mindstorms EV3 kit [#31313](https://www.lego.com/nl-nl/product/lego-mindstorms-ev3-31313) in addition to the components described in the attached [Order List](attachments/Tech_United_Robot_-_Order_List.xlsx), including component images for convenience. For the Turtle to be able move around in all directions with only 3 wheels we make use of omni wheels. For more information on omni wheels check [this Wikipedia article](https://en.wikipedia.org/wiki/Omni_wheel). Omni wheels are wheels that can travel in all directions instead of the 2 with normal wheels. In the programming section we will explain how to employ these cool wheels. Unfortunately LEGO does not have omni wheel components, so we use "Omni Wheel 58 mm" from [Nexus Robots](http://www.nexusrobot.com/) instead (also see [Order List](attachments/Tech_United_Robot_-_Order_List.xlsx) for ordering options).
-
-Or you can buy the [expansion set](https://www.toypro.com/nl/product/36768/sioux-en-tech-united-voetbalrobot-uitbreidingsset) specifically assembled. You could even get the [combi-deal of the mindstorms and the expansion set](https://www.toypro.com/nl/product/37159/combi-deal-sioux-en-tech-united-voetbalrobot-compleet).
+To build your own Turtle you will need the Mindstorms EV3 kit [#31313](https://www.lego.com/nl-nl/product/lego-mindstorms-ev3-31313) in addition to the components described in the attached [Order List](attachments/Tech_United_Robot_-_Order_List.xlsx), including component images for convenience. For the Turtle to be able move around in all directions with only 3 wheels we make use of omni wheels. For more information on omni wheels check [this Wikipedia article](https://en.wikipedia.org/wiki/Omni_wheel). Omni wheels are wheels that can travel in all directions instead of just two of normal wheels. In the programming section we will explain how to employ these cool wheels. Unfortunately LEGO does not have omni wheel components, so we use "Omni Wheel 58 mm" from [Nexus Robots](http://www.nexusrobot.com/) instead (also see [Order List](attachments/Tech_United_Robot_-_Order_List.xlsx) for ordering options).
 
 ### Instructions
 
@@ -49,9 +47,9 @@ The [building instructions](attachments/Lego_Instructions_Soccer_Robot.pdf) can 
 
 In this project we will program the Turtle using Ev3Dev and Python. To start connecting your EV3 to Alexa follow the [Setup and mission described on the Challenge](https://www.hackster.io/alexagadgets/lego-mindstorms-voice-challenge-setup-17300f). If you want to skip those and jump right ahead, follow the instructions in [Setup](SETUP.md).
 
-The following sections describe how to program the Turtle and continues where the missions or Setup ended. Specifically, it means your EV3 is already setup with EV3Dev as well as able to connect to your Alexa product and VSCode is setup to connect to your EV3 and run Python code.
+The following subsections describe how to program the Turtle and continue where the setup and missions ended. Specifically, it means your EV3 is already setup with EV3Dev as well as able to connect to your Alexa product and VSCode is setup to connect to your EV3 and run Python code.
 
-![Information](emoticons/information-source_2139_s.png) The movement of the Turtle can be done after step 59 in the building instructions. Just connect the left motor to port A, right to B and back motor to C. Note that the black beam added in step 59 indicates the front of the Turtle and the "spoiler" indicates the back.
+![Information](emoticons/information-source_2139_s.png) The movement of the Turtle can be done after step 59 in the building instructions. Just connect the left motor to port A, right to B and back motor to C. Note that the black beam added in step 59 is at the front of the Turtle and the "spoiler" is at the back.
 
 ![Step 59 Movement Sub Assembly](readme-images/step-59.png)
 
@@ -88,7 +86,7 @@ Below is an sketch of the wheel configuration. The concept behind the triangle i
 
 ##### Move Forwards and Backwards
 
-So let's start with moving forwards. To move forward we need to enable both front motors (port A and B). These motors need to be set to the same speed and rotate in opposite directions. THe opposite direction is needed, since the motors are positioned in opposite directions. We want the wheels to rotate in the same directions and therefore one motor needs to be set in negative speed. In summary, to move forward we set motor A to 25% power and Motor B to -25% power. In this example we use 2 seconds for the duration.
+So let's start with moving forwards. To move forward we need to enable both front motors (port A and B). These motors need to be set to the same speed and rotate in opposite directions. The opposite direction is because the motors are positioned in opposite directions. We want the wheels to rotate in the same directions and therefore one motor needs to be set to a negative speed. In summary, to move forward we set motor A to 25% power and motor B to -25% power. In this example we use 2 seconds for the duration.
 
 ![Motor direction forward-backward](readme-images/turtle-omni-wheels-fb.png)
 
@@ -123,25 +121,25 @@ if direction in Direction.LEFT.value:
 
 ##### Move Sideways
 
-Now we have covered the basic movement and lets dive into the movements that make omni wheels so cool: Moving sideways. For the sideways movement we need to enable all large motors. We cannot just set the same speed to all, since then the Turtle will rotate during its movement (also cool ,but left as an experiment to the reader). Instead we need to make sure that the back wheel does not rotate and follows a straight line. We do that by applying less power to the front wheels, specifically half the power. The front wheels need to move in opposite direction. The reason is that motor A needs to counter act the rotation of motor B and thereby keep the Turtle straight. It might sound counter intuitive, so just play around with different values using the python snippets provided or the [LEGO Mindstorms EV3 Home Edition software](https://www.lego.com/en-us/themes/mindstorms/downloads).
+Now we have covered the basic movement and lets dive into the movements that make omni wheels so cool: Moving sideways. For the sideways movement we need to enable all large motors. We cannot just set the same speed to all, since then the Turtle will rotate during its movement (also cool, but left as an experiment to the reader). Instead we need to make sure that the back wheel does not rotate and follows a straight line. We do that by applying less power to the front wheels, specifically half the power. The front wheels need to move in opposite direction. The reason is that motor A needs to counter act the rotation of motor B and thereby keep the Turtle straight. It might sound counter intuitive, so just play around with different values using the python snippets provided or the [LEGO Mindstorms EV3 Home Edition software](https://www.lego.com/en-us/themes/mindstorms/downloads).
 
 ![Motor direction left-right](readme-images/turtle-omni-wheels-lr.png)
 
 ```python
 if direction in Direction.LEFT.value:
-    self.motorLeft.on_for_seconds(SpeedPercent(12.5), duration, block=False)
-    self.motorRight.on_for_seconds(SpeedPercent(12.5), duration, block=False)
-    self.motorBack.on_for_seconds(SpeedPercent(-25), duration, block=False)
+    self.motorLeft.on_for_seconds(SpeedPercent(12.5), 2, block=False)
+    self.motorRight.on_for_seconds(SpeedPercent(12.5), 2, block=False)
+    self.motorBack.on_for_seconds(SpeedPercent(-25), 2, block=False)
 
 if direction in Direction.RIGHT.value:
-    self.motorLeft.on_for_seconds(SpeedPercent(-12.5), duration, block=False)
-    self.motorRight.on_for_seconds(SpeedPercent(-12.5), duration, block=False)
-    self.motorBack.on_for_seconds(SpeedPercent(25), duration, block=False)
+    self.motorLeft.on_for_seconds(SpeedPercent(-12.5), 2, block=False)
+    self.motorRight.on_for_seconds(SpeedPercent(-12.5), 2, block=False)
+    self.motorBack.on_for_seconds(SpeedPercent(25), 2, block=False)
 ```
 
 #### Taking the Ball and Scoring
 
-A moving Turtle is nice, but without a ball you cannot be come world champion. In this section we will tackle the taking and shooting of the ball.
+A moving Turtle is nice, but without a ball you cannot become world champion. In this section we will tackle the taking and shooting of the ball.
 
 ##### Grabbing the ball
 
@@ -160,7 +158,7 @@ if command in Command.TAKE.value:
     self.taking_mode = True
 ```
 
-Also we need to add a background thread to the initialization. So we add the initialization of the flag as well as start the back ground thread.
+Also we need to add a background thread to the initialization. So we add the initialization of the flag as well as start the background thread.
 
 ```python
 class MindstormsGadget(AlexaGadget):
@@ -177,7 +175,7 @@ class MindstormsGadget(AlexaGadget):
 
 The logic of the `_take_stop_thread` is to monitor the power needed to rotate the wheels. When the power needed is too high we know we have taken the ball, since the ball is blocking the wheels from moving and hence the motor tries to increase the power for the movement.
 
-The function keeps looping (`while True:`) and if we are in `taking_mode` then it checks the power. To prevent stopping the motor to early we make sure we get 3 measurements in a row that indicate an increased motor power. When the ball is taken en blocking the wheels, we are quite sure that we get three such measurements in a row. Once we detected 3 measurement, we stop the motor and indicate that we are out of `taking_mode`. By setting the `scoring_mode` flag to `True` we indicate that we have taken control of the ball and are ready to score.
+The function keeps looping (`while True:`) and if we are in `taking_mode` then it checks the power. To prevent stopping the motor to early we make sure we get three measurements in a row that indicate an increased motor power. When the ball is taken en blocking the wheels, we are quite sure that we get three such measurements in a row. Once we detected three measurement, we stop the motor and indicate that we are out of `taking_mode`. By setting the `scoring_mode` flag to `True` we indicate that we have taken control of the ball and are ready to score.
 
 ```python
 def _take_stop_thread(self):
@@ -201,7 +199,7 @@ def _take_stop_thread(self):
 
 ##### Shooting the ball
 
-Shooting the ball is simpler and we just need to enable motor D for a short and quick rotation. We need a quick short rotation so that the power on the wheels is transferred to the ball.
+Shooting the ball is simpler and we just need to enable motor D for a short and quick rotation. We need a quick rotation so that the power on the wheels is transferred to the ball and the ball is shot.
 
 ```python
 if command in Command.SHOOT.value:
